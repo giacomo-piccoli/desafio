@@ -1,0 +1,7 @@
+java:
+  image: my-java-image:latest
+  port: 8080
+
+angular:
+  image: my-angular-image:latest
+  port: 4200

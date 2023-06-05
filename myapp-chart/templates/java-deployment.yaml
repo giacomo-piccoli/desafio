@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "myapp-chart.fullname" . }}
+  labels:
+    app: {{ include "myapp-chart.name" . }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ include "myapp-chart.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "myapp-chart.name" . }}
+    spec:
+      containers:
+        - name: java-app
+          image: {{ .Values.java.image }}
+          ports:
+            - containerPort: {{ .Values.java.port }}
